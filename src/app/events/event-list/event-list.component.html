@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="">
+      <a class="btn btn-success" [routerLink]="['new']">New Event</a>
+  </div>
+  <ul class="list-group">
+      <li class="list-group-item" *ngFor="let event of events$ | async">
+          <h5>{{ event.title }}</h5>
+          <p>Date: {{ event.date }}</p>
+          <p>Location: {{ event.location }}</p>
+          <p>Description: {{ event.description }}</p>
+          <a class="viewDetailButton" [routerLink]="['/events', event.id]" routerLinkActive="active">View Details</a>
+      </li>
+  </ul>
+</div>

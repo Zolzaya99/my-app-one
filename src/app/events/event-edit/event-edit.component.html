@@ -1,0 +1,23 @@
+<div class="container">
+    <h2>{{ isNewEvent ? 'Create New Event' : 'Edit Event' }}</h2>
+    <form (ngSubmit)="saveEvent()">
+      <div class="form-group">
+          <label for="eventName">Event Name:</label>
+          <input type="text" class="form-control" id="eventName" name="eventName" [(ngModel)]="event.title" required>
+      </div>
+      <div class="form-group">
+          <label for="eventDate">Date:</label>
+          <input type="date" class="form-control" id="eventDate" name="eventDate" [(ngModel)]="event.date" required>
+      </div>
+      <div class="form-group">
+          <label for="eventLocation">Location:</label>
+          <input type="text" class="form-control" id="eventLocation" name="eventLocation" [(ngModel)]="event.location" required>
+      </div>
+      <div class="form-group">
+          <label for="eventDescription">Description:</label>
+          <textarea class="form-control" id="eventDescription" name="eventDescription" [(ngModel)]="event.description"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">{{ isNewEvent ? 'Create' : 'Update' }} Event</button>
+  </form>
+</div>
+  

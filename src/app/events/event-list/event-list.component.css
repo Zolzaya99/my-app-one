@@ -1,0 +1,19 @@
+.btn.btn-success {
+    background-color: rgb(172, 221, 234);
+    color: black;
+    padding: 5px;
+    margin: 10px;
+    border: none;
+}
+
+.viewDetailButton {
+    background-color: rgb(191, 240, 226);
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+div.container {
+    align-items: center;
+    width: 50%;
+}

@@ -1,0 +1,13 @@
+<div class="container">
+  <h2>Event Details</h2>
+  <div *ngIf="event">
+    <p><strong>Title:</strong> {{ event.title }}</p>
+    <p><strong>Date:</strong> {{ event.date }}</p>
+    <p><strong>Location:</strong> {{ event.location }}</p>
+    <p><strong>Description:</strong> {{ event.description }}</p>
+    <button class="btn btn-primary" routerLink="edit">Edit</button>
+    <!-- <button class="btn btn-danger" (click)="onDelete()">Delete</button> -->
+    <button class="btn btn-danger" routerLink="delete">Delete</button>
+
+  </div>
+</div>

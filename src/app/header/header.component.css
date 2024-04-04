@@ -1,0 +1,15 @@
+.d-flex {
+    display: flex;
+    padding-top: 20px;
+    column-gap: 5px;
+}
+
+.btn.btn-light {
+    background-color: azure;
+    color: black;
+}
+
+header {
+    background-color: rgb(214, 185, 213);
+}
+
