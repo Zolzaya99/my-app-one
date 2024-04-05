@@ -29,7 +29,6 @@ export class EventDetailComponent implements OnInit {
   }
   
   updateEvent(): void {
-    // Navigate to the event edit page
     if (this.event) {
       this.router.navigate(['/events', this.event.id, 'edit']);
     } else {
@@ -38,12 +37,10 @@ export class EventDetailComponent implements OnInit {
   }
 
   deleteEvent(): void {
-    // Use the event service to delete the event
     if (this.event) {
       this.eventService.deleteEvent(this.event)
         .subscribe(
           () => {
-            // Navigate back to the event list after deletion
             this.router.navigate(['/events']);
           },
           error => console.error('Error deleting event:', error)
@@ -51,9 +48,5 @@ export class EventDetailComponent implements OnInit {
     } else {
       console.error('Event not loaded.');
     }
-  }
-  onDelete() {
-    this.eventService.deleteEvent(this.event);
-    this.router.navigate(['../'], { relativeTo: this.route });
   }
 }

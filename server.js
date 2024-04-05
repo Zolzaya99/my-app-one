@@ -48,7 +48,7 @@ app.use('/', index);
 app.use('/events', eventRoutes);
 
 // MongoDB connection
-mongoose.connect("mongodb+srv://zolzayaoyunkhand:Mongolia99@cluster0.n9tfwsa.mongodb.net/event-planner?retryWrites=true&w=majority&appName=Cluster0")
+mongoose.connect("mongodb+srv://zolzayaoyunkhand:Mongolia99!@cluster0.n9tfwsa.mongodb.net/event-planner?retryWrites=true&w=majority&appName=Cluster0")
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('Error connecting to MongoDB:', err));
 

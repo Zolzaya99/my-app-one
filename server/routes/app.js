@@ -3,8 +3,8 @@ var router = express.Router();
 var path = require('path');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.sendFile(path.join(__dirname, 'dist/my-app-one/browser/index.html'));
+router.get('', function(req, res, next) {
+  res.sendFile(path.join(__dirname, '../../dist/my-app-one/browser/index.html'));
 });
 
 module.exports = router;

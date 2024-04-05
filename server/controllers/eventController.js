@@ -1,6 +1,6 @@
 const Event = require('../models/event');
 
-// Controller function to get all events
+// get all events
 exports.getAllEvents = async (req, res) => {
     try {
         const events = await Event.find();
@@ -10,8 +10,8 @@ exports.getAllEvents = async (req, res) => {
     }
 };
 
-// Controller function to get one event by ID
-exports.getEventById = async (req, res) => {
+// get one event by ID
+exports.getEvent = async (req, res) => {
     try {
         const event = await Event.findById(req.params.id);
         if (!event) {
@@ -23,7 +23,7 @@ exports.getEventById = async (req, res) => {
     }
 };
 
-// Controller function to create a new event
+// create a new event
 exports.createEvent = async (req, res) => {
     const event = new Event({
         title: req.body.title,
@@ -40,7 +40,7 @@ exports.createEvent = async (req, res) => {
     }
 };
 
-exports.editEventById = async (req, res) => {
+exports.updateEvent = async (req, res) => {
     const eventId = req.params.id;
   
     try {
@@ -66,8 +66,8 @@ exports.editEventById = async (req, res) => {
     }
   };
   
-// Controller function to delete an event by ID
-exports.deleteEventById = async (req, res) => {
+// delete an event by ID
+exports.deleteEvent = async (req, res) => {
     try {
         const event = await Event.findById(req.params.id);
         if (!event) {

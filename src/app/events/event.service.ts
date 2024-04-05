@@ -1,29 +1,25 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject, throwError } from 'rxjs';
+import { Observable, throwError, Subject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Event } from './event.model';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-
 
 @Injectable({
   providedIn: 'root',
 })
 export class EventService {
-  private eventsUrl = 'http://localhost:3000/events';
+  private eventsUrl = 'https://localhost:3000/events';
   private eventSelectedSubject: Subject<Event> = new Subject<Event>();
+  eventSelected$: Observable<Event> = this.eventSelectedSubject.asObservable();
+  private events: Event[] = [];
+  private maxEventId: number = 0;
 
   constructor(private http: HttpClient) {}
-
-  eventSelected$: Observable<Event> = this.eventSelectedSubject.asObservable();
-
-  emitEventSelected(event: Event): void {
-    this.eventSelectedSubject.next(event);
-  }
 
   getEvents(): Observable<Event[]> {
     return this.http.get<Event[]>(this.eventsUrl)
       .pipe(
-        catchError(this.handleError)
+        catchError(this.handleError) 
       );
   }
 
@@ -62,7 +58,7 @@ export class EventService {
     );
   }
 
-  private handleError(error: HttpErrorResponse) {
+  private handleError(error: HttpErrorResponse): Observable<never> {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);
     } else {

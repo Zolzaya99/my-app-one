@@ -1,23 +1,38 @@
 <div class="container">
-    <h2>{{ isNewEvent ? 'Create New Event' : 'Edit Event' }}</h2>
-    <form (ngSubmit)="saveEvent()">
+  <h2>{{ editMode ? 'Edit Event' : 'Create New Event' }}</h2>
+  <form id="event-edit" (ngSubmit)="saveEvent()" #eventForm="ngForm">
       <div class="form-group">
-          <label for="eventName">Event Name:</label>
-          <input type="text" class="form-control" id="eventName" name="eventName" [(ngModel)]="event.title" required>
+          <label for="title">Event Name:</label>
+          <input type="text" class="form-control" id="title" name="title" [(ngModel)]="event.title" required #eventName="ngModel">
+          <div *ngIf="eventName.invalid && (eventName.dirty || eventName.touched)" class="text-danger">
+              <div *ngIf="eventName.errors.required">Event Name is required.</div>
+          </div>
       </div>
       <div class="form-group">
-          <label for="eventDate">Date:</label>
-          <input type="date" class="form-control" id="eventDate" name="eventDate" [(ngModel)]="event.date" required>
+          <label for="date">Date:</label>
+          <input type="date" class="form-control" id="date" name="date" [(ngModel)]="event.date" required #eventDate="ngModel">
+          <div *ngIf="eventDate.invalid && (eventDate.dirty || eventDate.touched)" class="text-danger">
+              <div *ngIf="eventDate.errors.required">Date is required.</div>
+          </div>
       </div>
       <div class="form-group">
-          <label for="eventLocation">Location:</label>
-          <input type="text" class="form-control" id="eventLocation" name="eventLocation" [(ngModel)]="event.location" required>
+          <label for="location">Location:</label>
+          <input type="text" class="form-control" id="location" name="location" [(ngModel)]="event.location" required #eventLocation="ngModel">
+          <div *ngIf="eventLocation.invalid && (eventLocation.dirty || eventLocation.touched)" class="text-danger">
+              <div *ngIf="eventLocation.errors.required">Location is required.</div>
+          </div>
       </div>
       <div class="form-group">
-          <label for="eventDescription">Description:</label>
-          <textarea class="form-control" id="eventDescription" name="eventDescription" [(ngModel)]="event.description"></textarea>
+          <label for="description">Description:</label>
+          <textarea class="form-control" id="description" name="description" [(ngModel)]="event.description"></textarea>
       </div>
-      <button type="submit" class="btn btn-primary">{{ isNewEvent ? 'Create' : 'Update' }} Event</button>
+      <button type="submit" class="btn btn-primary">{{ editMode ? 'Update' : 'Create' }} Event</button>
+      <button class="btn btn-primary" type="button" (click)="onCancel()">Cancel</button>
   </form>
+  <div *ngIf="successMessage" class="alert alert-success mt-3" role="alert">
+      {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3" role="alert">
+      {{ errorMessage }}
+  </div>
 </div>
-  

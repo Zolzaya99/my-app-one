@@ -8,7 +8,8 @@
           <p>Date: {{ event.date }}</p>
           <p>Location: {{ event.location }}</p>
           <p>Description: {{ event.description }}</p>
-          <a class="viewDetailButton" [routerLink]="['/events', event.id]" routerLinkActive="active">View Details</a>
+          <!-- <a class="viewDetailButton" [routerLink]="['/events', event.id]" routerLinkActive="active">View Details</a> -->
+          <app-event-detail [event]="event">View Details</app-event-detail>
       </li>
   </ul>
 </div>
