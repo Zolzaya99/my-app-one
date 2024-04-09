@@ -7,8 +7,8 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/events', pathMatch: 'full' }, 
   { path: 'events', component: EventListComponent },
   { path: 'events/new', component: EventEditComponent },
-  { path: 'events/:id', component: EventDetailComponent }, 
-  { path: 'events/:id/edit', component: EventEditComponent }
+  { path: 'events/:_id', component: EventDetailComponent }, 
+  { path: 'events/:_id/edit', component: EventEditComponent }
 ];
 
 

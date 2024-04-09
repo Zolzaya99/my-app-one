@@ -1,0 +1,13 @@
+.btn.btn-primary {
+    margin: 5px;
+}
+
+.panel.panel-default {
+    margin: 20px;
+    width: 50%;
+
+}
+
+.panel-heading {
+    background-color: rgb(250, 244, 251);
+}

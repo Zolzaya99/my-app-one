@@ -40,15 +40,15 @@ app.use((req, res, next) => {
 app.use(express.static(path.join(__dirname, 'dist/my-app-one/browser/')));
 
 // Import routing files
-const index = require('./server/routes/app');
+// const index = require('./server/routes/app');
 const eventRoutes = require('./server/routes/events');
 
 // API routes
-app.use('/', index);
-app.use('/events', eventRoutes);
+// app.use('/', index);
+app.use('/api/events', eventRoutes);
 
 // MongoDB connection
-mongoose.connect("mongodb+srv://zolzayaoyunkhand:Mongolia99!@cluster0.n9tfwsa.mongodb.net/event-planner?retryWrites=true&w=majority&appName=Cluster0")
+mongoose.connect("mongodb+srv://zolzayaoyunkhand:Mongolia99@cluster0.n9tfwsa.mongodb.net/event-planner?retryWrites=true&w=majority&appName=Cluster0")
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('Error connecting to MongoDB:', err));
 

@@ -9,8 +9,11 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./event-edit.component.css']
 })
 export class EventEditComponent implements OnInit {
-  event: Event = new Event();
+  // event: Event = new Event(); 
+  originalEvent: Event;
+  event: Event;
   editMode: boolean = false;
+  id: string;
   successMessage: string = '';
   errorMessage: string = '';
 
@@ -20,14 +23,18 @@ export class EventEditComponent implements OnInit {
     private router: Router
   ) { }
 
+
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      if (params['id']) {
+      const eventId = params['_id']; 
+      if (eventId) {
         this.editMode = true;
-        const eventId = params['id'];
-        this.eventService.getEvent(eventId).subscribe(event => {
-          this.event = event;
-        });
+        this.eventService.getEvent(eventId).subscribe(
+          event => {
+            this.event = event;
+          },
+          error => console.error('Error fetching event:', error)
+        );
       } else {
         this.editMode = false;
       }
@@ -36,23 +43,23 @@ export class EventEditComponent implements OnInit {
 
   saveEvent(): void {
     if (this.editMode) {
-      this.eventService.updateEvent(this.event).subscribe(() => {
-        this.successMessage = 'Event updated successfully.';
-        this.router.navigate(['/events']); 
-      }, error => {
-        this.errorMessage = 'Error updating event. Please try again later.';
-      });
-    } else {
       this.eventService.addEvent(this.event).subscribe(() => {
         this.successMessage = 'Event created successfully.';
         this.router.navigate(['/events']); 
       }, error => {
         this.errorMessage = 'Error creating event. Please try again later.';
       });
+    } else {
+      this.eventService.updateEvent(this.event).subscribe(() => {
+        this.successMessage = 'Event updated successfully.';
+        this.router.navigate(['/events']); 
+      }, error => {
+        this.errorMessage = 'Error updating event. Please try again later.';
+      });
     }
   }
 
   onCancel(): void {
-    this.router.navigate(['/events']);
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 }

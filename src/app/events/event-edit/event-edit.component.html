@@ -3,8 +3,8 @@
   <form id="event-edit" (ngSubmit)="saveEvent()" #eventForm="ngForm">
       <div class="form-group">
           <label for="title">Event Name:</label>
-          <input type="text" class="form-control" id="title" name="title" [(ngModel)]="event.title" required #eventName="ngModel">
-          <div *ngIf="eventName.invalid && (eventName.dirty || eventName.touched)" class="text-danger">
+          <input type="text" class="form-control" id="title" name="title" [(ngModel)]="event.title" required #eventTitle="ngModel">
+          <div *ngIf="eventTitle.invalid && (eventTitle.dirty || eventTitle.touched)" class="text-danger">
               <div *ngIf="eventName.errors.required">Event Name is required.</div>
           </div>
       </div>
