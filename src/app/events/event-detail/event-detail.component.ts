@@ -45,22 +45,22 @@ export class EventDetailComponent implements OnInit {
       console.error('Event not loaded.');
     }
   }
-
- 
-deleteEvent(): void {
-  if (this.event && this.event.id) {
-    this.eventService.deleteEvent(this.event.id).subscribe(
-      () => {
-        this.router.navigate(['/events']);
-      },
-      error => {
-        console.error('Error deleting event:', error);
-      }
-    );
-  } else {
-    console.error('Event or event ID not loaded.');
+  deleteEvent(): void {
+    if (this.event && this.event.id) {
+      this.eventService.deleteEvent(this.event.id).subscribe(
+        () => {
+          this.router.navigate(['/events']);
+        },
+        error => {
+          console.error('Error deleting event:', error);
+        }
+      );
+    } else {
+      console.error('Event or event ID not loaded.');
+      console.log('Event:', this.event);
+    }
   }
-}
-}
   
-
+  
+  
+}
